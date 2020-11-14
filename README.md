@@ -7,6 +7,7 @@ by: Farhin Chowdhury
 * [Description](*description)
 * [Images](#images)
 * [Technologies](#technologies)
+* [Link](#link)
 * [Questions](#questions)
 
 ## Description:
@@ -25,6 +26,12 @@ by: Farhin Chowdhury
  - JavaScript
  - SQL Databases
  - Inquirer
+
+## Link:
+
+This link shows a vide demonstration of the program:
+
+[Video Link](https://youtu.be/84aFyx0ilDk)
 
 
 
