@@ -4,7 +4,7 @@ const inquirer = require('inquirer')
 let action = ""
 
 async function main(){
-    console.log(`Welcome to the Employe Managementment System`)
+    console.log(`........................Welcome to the Employe Managementment System........................`)
 
     while(true){
 
@@ -13,7 +13,7 @@ async function main(){
         {
             type:'list',
             name: 'task',
-            message:'choose your action:',
+            message:'Choose your action:',
             choices:
             ['View all Departments',
             'View all Roles',
@@ -178,13 +178,14 @@ async function main(){
     action= await inquirer.prompt([{
         type:"confirm",
         name:"choice",
-        message: "would you like to continue?"
+        message: "Would you like to continue?"
     }])
   
 
     if(!action.choice){
         orm.closeDb() 
         console.log(`Thank you for using this program!`)
+        console.log(`<--------------------------------------EXITING NOW-------------------------------------->`)
        process.exit
     }
     }
