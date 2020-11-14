@@ -16,8 +16,8 @@ by: Farhin Chowdhury
  This is an Employee Management System program that can be handled through the command line. In this particular program the user is able to add Departments, Roles and Employees, as well as update employee roles and also delete departments, roles and employees. 
 
  ## Images:
- [!screenshot1](/Assets/Employee-Tracker1.png)
- [!screenshot1](/Assets/Employee-Tracker2.png)
+ ![screenshot1](/Assets/Employee-Tracker1.png)
+ ![screenshot1](/Assets/Employee-Tracker2.png)
 
 
  ## Technologies:
