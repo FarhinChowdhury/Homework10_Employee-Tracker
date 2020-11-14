@@ -1,7 +1,6 @@
 const orm = require( './orm' );
 const inquirer = require('inquirer')
 
-let action = ""
 
 async function main(){
     console.log(`........................Welcome to the Employe Managementment System........................`)
@@ -9,7 +8,7 @@ async function main(){
     while(true){
 
     
-     action = await inquirer.prompt([
+     let action = await inquirer.prompt([
         {
             type:'list',
             name: 'task',
@@ -180,13 +179,12 @@ async function main(){
         name:"choice",
         message: "Would you like to continue?"
     }])
-  
-
     if(!action.choice){
         orm.closeDb() 
         console.log(`Thank you for using this program!`)
         console.log(`<--------------------------------------EXITING NOW-------------------------------------->`)
        process.exit
+       break;
     }
     }
     
