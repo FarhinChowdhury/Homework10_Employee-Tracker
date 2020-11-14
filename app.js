@@ -1,14 +1,32 @@
 const orm = require( './orm' );
 const inquirer = require('inquirer')
 
+let action = ""
+
 async function main(){
+    console.log(`Welcome to the Employe Managementment System`)
+
+    while(true){
+
     
-     const action = await inquirer.prompt([
+     action = await inquirer.prompt([
         {
             type:'list',
             name: 'task',
             message:'choose your action:',
-            choices:['View all Departments','View all Roles','View all Employees','Add Employee', 'Add Role', 'Add Department', 'Update Employee Role']
+            choices:
+            ['View all Departments',
+            'View all Roles',
+            'View all Employees',
+            'Add Employee', 
+            'Add Role', 
+            'Add Department', 
+            'Update Employee Role',
+            'Get Employee by Manager',
+            'Delete Employee',
+            'Delete Role',
+            'Delete Department'
+        ]
         }
         ])
 
@@ -88,17 +106,92 @@ async function main(){
 
             result = await orm.addDepartment(newDep.departmentName)
             console.log(`New Department Added`, newDep)
-            break;   
-    
-    
+            break;
+        case 'Delete Employee':
+            let employeeId= await inquirer.prompt([
+                {
+                    type:'input',
+                    name:'deleteEmployee',
+                    message: "What is the id of the employee you want to remove?"
+                }
+            ])
+            result = await orm.deleteEmployee(employeeId.deleteEmployee)
+            console.log(`Employee Removed.`)
+            break;
+        case 'Update Employee Role':
+            let info = await inquirer.prompt([
+                {
+                    type:'input',
+                    name:'employeeId',
+                    message: "What is the id of the employee you want to update?"
+                },
+                {
+                    type:'input',
+                    name:'roleId',
+                    message: "What is the id of the employee you want to update?"
+                },
+                {
+                    type:'input',
+                    name:'managerId',
+                    message: "What is the id of the employee you want to update?"
+                }
+            ]) 
+            result = await orm.updateEmployeeRoles(info.employeeId, info.roleId, info.managerId)
+            console.log(`Employee updated! You can check the Employee list to check the update.`, )
+            break;
+        case 'Delete Role':
+            let title= await inquirer.prompt([
+                {
+                    type:'input',
+                    name:'deleteRole',
+                    message: "What is the title of the role you would like to remove?"
+                }
+            ])
+            result = await orm.deleteRole(title.deleteRole)
+            console.log(`Role Removed.`)
+            break;
+        case 'Delete Department':
+            let department= await inquirer.prompt([
+                {
+                    type:'input',
+                    name:'deleteDep',
+                    message: "What is the department name you would like to remove?"
+                }
+            ])
+            result = await orm.deleteDepartment(department.deleteDep)
+            break;
+        case 'Get Employee by Manager':
+            let managerId= await inquirer.prompt([
+                {
+                    type:'input',
+                    name:'displayEmployee',
+                    message: "What is the manager id of the employees you are retreiving?"
+                }
+            ])
+            result = await orm.getEmployeesByManager(managerId.displayEmployee)
+
+        default:
+            break;
 
     }
     console.table(result)
+    action= await inquirer.prompt([{
+        type:"confirm",
+        name:"choice",
+        message: "would you like to continue?"
+    }])
+  
 
-    await orm.closeDb()
-
+    if(!action.choice){
+        orm.closeDb() 
+        console.log(`Thank you for using this program!`)
+       process.exit
+    }
+    }
     
 
+
+    
 }
 
 main()

@@ -58,12 +58,41 @@ function addEmployee(first_name, last_name, role_id, manager_id){
     return db.query (`INSERT INTO employees(first_name, last_name, role_id, manager_id) VALUES('${first_name}', '${last_name}',${role_id}, ${manager_id})`)
 }
 
-function updateEmployeeRoles(first_name, last_name, role_id, manager_id){
-    return db.query(`UPDATE employees SET role_id = ${role_id}, manager_id= ${manager_id} where first_name = '${first_name}' AND last_name = '${last_name}'`)
+function updateEmployeeRoles(id, role_id, manager_id){
+    const updatedEmp = `UPDATE employees SET role_id = ${role_id}, manager_id= ${manager_id} WHERE id = ${id}`
+    
+    return db.query(updatedEmp)
+}
+
+function deleteEmployee(employeeId){
+    return db.query(`DELETE FROM employees WHERE id=${employeeId}`)
+}
+function deleteRole(role_title){
+    return db.query(`DELETE FROM roles WHERE title='${role_title}'`)
+}
+
+function deleteDepartment(department_name){
+    return db.query(`DELETE FROM department WHERE department_name='${department_name}'`)
+}
+
+function getEmployeesByManager(manager_id){
+    return db.query(`SELECT * FROM employees WHERE manager_id=${manager_id}`)
 }
 
 function closeDb(){
     return db.close()
 }
 
-module.exports = {viewDepartments,viewRoles, viewEmployees, addDepartment, addRole,addEmployee, updateEmployeeRoles, closeDb}
+module.exports = 
+{viewDepartments,
+viewRoles, 
+viewEmployees, 
+addDepartment, 
+addRole,
+addEmployee, 
+updateEmployeeRoles, 
+deleteEmployee,
+deleteRole,
+deleteDepartment,
+getEmployeesByManager,
+closeDb}
