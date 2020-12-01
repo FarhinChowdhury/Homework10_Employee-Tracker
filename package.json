@@ -1,0 +1,22 @@
+{
+  "name": "homework10_employee-tracker",
+  "version": "1.0.0",
+  "description": "by: Farhin Chowdhury",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarhinChowdhury/Homework10_Employee-Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FarhinChowdhury/Homework10_Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/FarhinChowdhury/Homework10_Employee-Tracker#readme"
+}
